@@ -97,7 +97,7 @@ int main(void)
     Result res = 0;
     Handle notificationHandle;
 
-    MyThread *menuThread = menuCreateThread(), *errDispThread = errDispCreateThread(), *hbldrThread = hbldrCreateThread();
+    MyThread *errDispThread = errDispCreateThread(), *hbldrThread = hbldrCreateThread();
 
     if(R_FAILED(srvEnableNotification(&notificationHandle)))
         svcBreak(USERBREAK_ASSERT);
@@ -126,7 +126,7 @@ int main(void)
     }
     while(!terminationRequest);
 
-    MyThread_Join(menuThread, -1LL);
+    
     MyThread_Join(errDispThread, -1LL);
     MyThread_Join(hbldrThread, -1LL);
 
